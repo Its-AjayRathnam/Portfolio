@@ -6,7 +6,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "deploy": "vite build && gh-pages -d dist",
+    "generate": "vite build"
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
