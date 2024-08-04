@@ -5,8 +5,8 @@
  */
 
 // Plugins
-import { registerPlugins } from '@/plugins'
-import App from '@/App'
+import { registerPlugins } from './plugins'
+import App from './App.vue'
 // Components
 // Composables
 import { createApp } from 'vue'
