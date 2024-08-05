@@ -5,12 +5,12 @@
  */
 
 // Plugins
-import { registerPlugins } from './plugins'
-import App from './App'
+import { registerPlugins } from '@/plugins'
+import App from '@/App'
 // Components
 // Composables
 import { createApp } from "vue"
-import router from '../src/router/index'
+import router from '@/router/index'
 
 const app = createApp(App)
 
