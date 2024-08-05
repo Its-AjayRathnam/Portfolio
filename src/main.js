@@ -9,7 +9,7 @@ import { registerPlugins } from './plugins'
 import App from './App'
 // Components
 // Composables
-import { createApp } from 'vue'
+import { createApp } from "vue"
 import router from '../src/router/index'
 
 const app = createApp(App)
