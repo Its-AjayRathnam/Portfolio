@@ -17,10 +17,8 @@
             >
               Experience
             </p>
-          </div>
-          <div class="tab-titles">
             <p
-              class="tab-links active-link"
+              class="tab-links"
               style="
                 top: 0;
                 font-size: 2rem;
@@ -62,7 +60,7 @@
             </li>
           </ul>
         </div>
-        <div class="tab-contents active-tab" id="projects">
+        <div class="tab-contents" id="projects">
           <ul>
             <li>
               <span>Second Letter Generation Bot</span>
@@ -145,12 +143,12 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  height: 100vh;
-  width: 90vw;
+  width: 100%;
   position: static;
+  margin-bottom: 10%;
 }
 .titles {
-  width: 90vw;
+  width: 100%;
 }
 #about {
   color: #ababab;
@@ -165,7 +163,11 @@ export default {
 
 .tab-titles {
   display: flex;
+  gap: 10px;
   margin-bottom: 3%;
+  flex-wrap: wrap;
+  min-width: 80%;
+  justify-content: center;
 }
 .tab-links {
   margin-right: 3em;
@@ -180,7 +182,7 @@ export default {
   height: 3px;
   background: #dfc57b;
   position: absolute;
-  left: 0;
+  left: 13px;
   bottom: -8px;
   transition: 0.5s;
 }

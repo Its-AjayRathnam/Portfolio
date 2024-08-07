@@ -41,8 +41,8 @@
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Kaushan+Script&family=Permanent+Marker&family=Protest+Revolution&display=swap");
 .introduction {
-  height: 100vh;
-  width: 90vw;
+  width: 90%;
+  padding-bottom: 15%;
 }
 p {
   padding-left: 4%;

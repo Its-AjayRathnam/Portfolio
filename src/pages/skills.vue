@@ -101,7 +101,7 @@
 
 <style lang="scss" scoped>
 .skills {
-  height: 100vh;
+  padding-bottom: 15%;
   padding-left: 5%;
 }
 .skillsCard {
