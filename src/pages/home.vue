@@ -1,3 +1,4 @@
+<script setup></script>
 <template>
   <!-- <div class="headerMenu d-flex"></div> -->
   <div class="d-flex flex-column justify-center align-center heading">
@@ -53,6 +54,3 @@
   height: 5%;
 }
 </style>
-<script setup>
-import { IconBrandHipchat } from "@/components/tablerIcon";
-</script>

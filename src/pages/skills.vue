@@ -83,14 +83,14 @@
         height="10"
       ></v-progress-linear>
     </div>
-    <label for="">RPA Automation</label>
+    <label for="">Html, CSS, JS, Vue JS</label>
     <div class="progress d-flex justify-start align-center">
       <v-progress-linear
         value="90"
         max="100"
         bg-color="#E3E3E4"
         color="#7F9D73"
-        model-value="85"
+        model-value="65"
         height="10"
       ></v-progress-linear>
     </div>

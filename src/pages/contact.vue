@@ -1,3 +1,54 @@
+<script setup>
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandTelegram,
+  IconX,
+} from "@tabler/icons-vue";
+const contactDetail = ref({
+  name: "",
+  email: "",
+  contactNo: "",
+  message: "",
+});
+const contactForm = ref();
+const snackbar = ref(false);
+const loading = ref(false);
+const clearForm = () => {
+  contactDetail.value = {
+    name: null,
+    email: null,
+    message: null,
+    contactNo: null,
+  };
+};
+const onSave = async () => {
+  contactForm.value.validate().then(({ valid }) => {
+    if (valid) {
+      loading.value = true;
+      let url =
+        "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbww27MW5BfXMjMN0pkDastPRcrVRRuCqEYYP4hs8EJN6Vi5czuZCM3ds4S-x2Miue_f/exec";
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(contactDetail.value),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          loading.value = false;
+          snackbar.value = true;
+          clearForm();
+          console.log(response);
+        })
+        .catch((error) => {
+          alert("There was an error sending your message. Please try again.");
+          console.error("Error:", error);
+        });
+    }
+  });
+};
+</script>
 <template>
   <div class="contact">
     <p
@@ -13,8 +64,11 @@
     >
       Contact
     </p>
-    <div class="ma-12 mt-0">
-      <div class="container">
+    <div :class="$vuetify.display.smAndDown ? 'ma-4 mt-0' : 'ma-12 mt-0'">
+      <div
+        class="container"
+        :style="$vuetify.display.smAndDown ? 'width: auto' : 'width: 90%'"
+      >
         <div class="screen">
           <div class="screen-header">
             <div class="screen-header-left">
@@ -35,36 +89,102 @@
               </div>
               <div class="app-contact">CONTACT INFO : its.ajayrathnam@gmail.com</div>
             </div>
-            <div class="screen-body-item">
+            <v-form ref="contactForm" class="screen-body-item">
               <div class="app-form">
                 <div class="app-form-group">
-                  <input class="app-form-control" placeholder="NAME" required />
+                  <v-text-field
+                    v-model="contactDetail.name"
+                    class="app-form-control"
+                    placeholder="NAME"
+                    :rules="[
+                      () => (contactDetail.name?.length > 0 ? true : 'Name is required'),
+                    ]"
+                  />
                 </div>
                 <div class="app-form-group">
-                  <input class="app-form-control" placeholder="EMAIL" required />
+                  <v-text-field
+                    class="app-form-control"
+                    v-model="contactDetail.email"
+                    placeholder="EMAIL"
+                    type="email"
+                    :rules="[
+                      () =>
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactDetail.email)
+                          ? true
+                          : 'Invalid email address!!',
+                    ]"
+                  />
                 </div>
                 <div class="app-form-group">
-                  <input class="app-form-control" placeholder="CONTACT NO" required />
+                  <v-text-field
+                    class="app-form-control"
+                    v-model="contactDetail.contactNo"
+                    placeholder="CONTACT NO"
+                    :rules="[
+                      () =>
+                        /^(\+91[\-\s]?)?[6-9]\d{9}$/.test(contactDetail.contactNo)
+                          ? true
+                          : 'Contact number is required',
+                    ]"
+                  />
                 </div>
                 <div class="app-form-group message">
-                  <input class="app-form-control" placeholder="MESSAGE" required />
+                  <v-text-field
+                    class="app-form-control"
+                    v-model="contactDetail.message"
+                    placeholder="MESSAGE"
+                    :rules="[
+                      () =>
+                        contactDetail.message?.length > 0 ? true : 'Message is required',
+                    ]"
+                  />
                 </div>
                 <div class="app-form-group buttons d-flex justify-space-between w-100">
-                  <button class="app-form-button">CANCEL</button>
-                  <button class="app-form-button">SEND</button>
+                  <v-btn :prepend-icon="IconX" class="app-form-button" @click="clearForm"
+                    >CANCEL</v-btn
+                  >
+                  <v-btn
+                    :loading="loading"
+                    class="app-form-button"
+                    color="green"
+                    @click="onSave"
+                    :prepend-icon="IconBrandTelegram"
+                  >
+                    SEND
+                  </v-btn>
+                </div>
+                <div class="app-contact-me buttons d-flex justify-end ga-3 pt-5">
+                  <VBtn
+                    :icon="IconBrandGithub"
+                    class="app-form-button"
+                    @click="clear"
+                    color="black"
+                    size="30"
+                  ></VBtn>
+                  <VBtn
+                    :icon="IconBrandLinkedin"
+                    class="app-form-button"
+                    @click="submitMessage"
+                    color="blue"
+                    size="30"
+                  ></VBtn>
                 </div>
               </div>
-            </div>
+            </v-form>
+            <v-snackbar v-model="snackbar" multi-line color="green"
+              ><p>Sent Successfully!!</p>
+              <template v-slot:actions>
+                <v-btn color="red" variant="text" @click="snackbar = false">
+                  Close
+                </v-btn>
+              </template>
+            </v-snackbar>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script setup>
-import { tabler } from "@/components/Tabler/tabler-icons";
-</script>
 
 <style lang="scss" scoped>
 //@import "@/styles/contact.scss";
@@ -83,6 +203,7 @@ import { tabler } from "@/components/Tabler/tabler-icons";
   position: relative;
   background: #3e3e3e;
   border-radius: 15px;
+  padding-bottom: 2rem;
 }
 
 .screen:after {
@@ -285,5 +406,9 @@ import { tabler } from "@/components/Tabler/tabler-icons";
   .screen-body-item {
     padding: 0;
   }
+}
+.app-contact-me {
+  position: absolute;
+  left: 3.2rem;
 }
 </style>

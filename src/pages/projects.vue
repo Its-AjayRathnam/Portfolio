@@ -167,7 +167,7 @@ export default {
   margin-bottom: 3%;
   flex-wrap: wrap;
   min-width: 80%;
-  justify-content: center;
+  justify-content: start;
 }
 .tab-links {
   margin-right: 3em;
