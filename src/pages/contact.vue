@@ -22,6 +22,12 @@ const clearForm = () => {
     contactNo: null,
   };
 };
+// const openGitHtb = () => {
+//   window.open("https://github.com/Its-AjayRathnam");
+// };
+// const openLinedIn = () => {
+//   window.open("https://google.com");
+// };
 const onSave = async () => {
   contactForm.value.validate().then(({ valid }) => {
     if (valid) {
@@ -154,20 +160,26 @@ const onSave = async () => {
                   </v-btn>
                 </div>
                 <div class="app-contact-me buttons d-flex justify-end ga-3 pt-5">
-                  <VBtn
-                    :icon="IconBrandGithub"
-                    class="app-form-button"
-                    @click="clear"
-                    color="black"
-                    size="30"
-                  ></VBtn>
-                  <VBtn
-                    :icon="IconBrandLinkedin"
-                    class="app-form-button"
-                    @click="submitMessage"
-                    color="blue"
-                    size="30"
-                  ></VBtn>
+                  <a target="_blank" href="https://github.com/Its-AjayRathnam">
+                    <VBtn
+                      :icon="IconBrandGithub"
+                      class="app-form-button"
+                      @click="openGitHtb"
+                      color="black"
+                      size="30"
+                    ></VBtn
+                  ></a>
+                  <a
+                    target="_blank"
+                    href="https://www.linkedin.com/in/ajay-rathnam-65544a23b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    ><VBtn
+                      :icon="IconBrandLinkedin"
+                      class="app-form-button"
+                      @click="openLinedIn"
+                      color="blue"
+                      size="30"
+                    ></VBtn
+                  ></a>
                 </div>
               </div>
             </v-form>

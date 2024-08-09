@@ -1,3 +1,33 @@
+<script setup>
+import {
+  IconArrowNarrowRight,
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandTelegram,
+  IconX,
+} from "@tabler/icons-vue";
+
+const opentab = (event, tabname) => {
+  const tablinks = document.getElementsByClassName("tab-links");
+  const tabcontents = document.getElementsByClassName("tab-contents");
+
+  // Remove 'active-link' class from all tab links
+  for (let tablink of tablinks) {
+    tablink.classList.remove("active-link");
+  }
+
+  // Remove 'active-tab' class from all tab contents
+  for (let tabcontent of tabcontents) {
+    tabcontent.classList.remove("active-tab");
+  }
+
+  // Add 'active-link' class to the clicked tab
+  event.currentTarget.classList.add("active-link");
+
+  // Show the corresponding tab content
+  document.getElementById(tabname).classList.add("active-tab");
+};
+</script>
 <template>
   <div>
     <div class="about d-flex">
@@ -6,39 +36,21 @@
           <div class="tab-titles">
             <p
               class="tab-links active-link"
-              style="
-                top: 0;
-                font-size: 2rem;
-                padding-left: 2%;
-                padding-bottom: 2%;
-                color: #dfc57b;
-              "
+              style="top: 0; font-size: 2rem; padding-left: 2%; color: #dfc57b"
               @click="opentab($event, 'experience')"
             >
               Experience
             </p>
             <p
               class="tab-links"
-              style="
-                top: 0;
-                font-size: 2rem;
-                padding-left: 2%;
-                padding-bottom: 2%;
-                color: #dfc57b;
-              "
+              style="top: 0; font-size: 2rem; padding-left: 2%; color: #dfc57b"
               @click="opentab($event, 'projects')"
             >
               Projects
             </p>
             <p
               class="tab-links"
-              style="
-                top: 0;
-                font-size: 2rem;
-                padding-left: 2%;
-                padding-bottom: 2%;
-                color: #dfc57b;
-              "
+              style="top: 0; font-size: 2rem; padding-left: 2%; color: #dfc57b"
               @click="opentab($event, 'education')"
             >
               Education
@@ -47,16 +59,16 @@
         </div>
         <div class="tab-contents active-tab ga-3" id="experience">
           <ul>
+            <li style="padding-top: 3%">
+              <span>Software Developer</span><br />Descpro Technologies Pvt. Ltd. -
+              Palakkad
+              <br />
+              August 2023 - Present
+            </li>
             <li>
               <span>Junior Software Engineer</span><br />LogicValley Technologies Pvt.
               Ltd. - Coimbatore <br />
               July 2022 - August 2023
-            </li>
-            <li style="padding-top: 3%">
-              <span>Software Programmer</span><br />Descpro Technologies Pvt. Ltd. -
-              Palakkad
-              <br />
-              August 2023 - Present
             </li>
           </ul>
         </div>
@@ -95,6 +107,12 @@
               It records the HeartRate, Spo2, and O2 level of patients and sends fallback
               alert to emergency contacts if the levels reach below limit
             </li>
+            <li>
+              <span>Crystal (Kalyan Jewellers)</span><br />
+              <p><span>Environment:</span> C# .Net core / PostGreSql</p>
+              Crystal Project handles the product orders between supplier and Kalyan
+              Users,
+            </li>
           </ul>
         </div>
         <div class="tab-contents" id="education">
@@ -113,33 +131,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    opentab(event, tabname) {
-      const tablinks = document.getElementsByClassName("tab-links");
-      const tabcontents = document.getElementsByClassName("tab-contents");
-
-      // Remove 'active-link' class from all tab links
-      for (let tablink of tablinks) {
-        tablink.classList.remove("active-link");
-      }
-
-      // Remove 'active-tab' class from all tab contents
-      for (let tabcontent of tabcontents) {
-        tabcontent.classList.remove("active-tab");
-      }
-
-      // Add 'active-link' class to the clicked tab
-      event.currentTarget.classList.add("active-link");
-
-      // Show the corresponding tab content
-      document.getElementById(tabname).classList.add("active-tab");
-    },
-  },
-};
-</script>
 
 <style lang="scss" scoped>
 .container {
