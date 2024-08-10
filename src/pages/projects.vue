@@ -110,8 +110,11 @@ const opentab = (event, tabname) => {
             <li>
               <span>Crystal (Kalyan Jewellers)</span><br />
               <p><span>Environment:</span> C# .Net core / PostGreSql</p>
-              Crystal Project handles the product orders between supplier and Kalyan
-              Users,
+              The Crystal Project manages product orders between suppliers and Kalyan
+              users. It stores data in a PostgreSQL database and provides retrieval
+              through a C# .NET Core API. Additionally, the system sends email
+              notifications to suppliers regarding orders and offers comprehensive order
+              management services for Kalyan users.
             </li>
           </ul>
         </div>

@@ -1,6 +1,7 @@
 <script setup>
 import {
   IconBrandGithub,
+  IconBrandGmail,
   IconBrandLinkedin,
   IconBrandTelegram,
   IconX,
@@ -33,7 +34,7 @@ const onSave = async () => {
     if (valid) {
       loading.value = true;
       let url =
-        "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbww27MW5BfXMjMN0pkDastPRcrVRRuCqEYYP4hs8EJN6Vi5czuZCM3ds4S-x2Miue_f/exec";
+        "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwffRndwvlJB5gUGZXQbMyYC_pF0OJX3JYad7GnSOYAftoPdJB5gph11xPpsxFfM74N/exec";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(contactDetail.value),
@@ -68,7 +69,7 @@ const onSave = async () => {
         color: #dfc57b;
       "
     >
-      Contact
+      Get in touch
     </p>
     <div :class="$vuetify.display.smAndDown ? 'ma-4 mt-0' : 'ma-12 mt-0'">
       <div
@@ -169,14 +170,21 @@ const onSave = async () => {
                       size="30"
                     ></VBtn
                   ></a>
-                  <a
-                    target="_blank"
-                    href="https://www.linkedin.com/in/ajay-rathnam-65544a23b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  <a target="_blank" href="https://www.linkedin.com/in/ajay-rathnam/"
                     ><VBtn
                       :icon="IconBrandLinkedin"
                       class="app-form-button"
                       @click="openLinedIn"
                       color="blue"
+                      size="30"
+                    ></VBtn
+                  ></a>
+                  <a target="_blank" href="mailto:its.ajayrathnam@gmail.com"
+                    ><VBtn
+                      :icon="IconBrandGmail"
+                      class="app-form-button"
+                      @click="openMail"
+                      color="red"
                       size="30"
                     ></VBtn
                   ></a>
